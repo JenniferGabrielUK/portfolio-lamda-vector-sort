@@ -1,0 +1,44 @@
+								//========Predicate Lambda Expressions========
+#include <iostream>
+#include <string>
+#include <vector>
+#include <functional>
+#include <algorithm>
+#include <iomanip>
+
+class Person {
+	friend std::ostream& operator<<(std::ostream& os, const Person& rhs);             //overloaded insertion operator<< friend
+private:
+	std::string name;
+	int age;
+public:
+	Person(std::string name, int age) : name{ name }, age{ age } {};                  //overloaded constructor
+	Person(const Person& p) : name{ p.name }, age{ p.age } {}                         //copy constructor
+	~Person() = default;                                                              //default destrcutor
+	void set_name(std::string name) { this->name = name; }
+	std::string get_name() const { return name; }
+	void set_age(int age) { this->age = age; }
+	int get_age()const { return age; }
+};
+
+std::ostream& operator<<(std::ostream& os, const Person& rhs) {                        //overloaded insertion operator code
+	os << std::setw(15) << std::left << "[Person: " << std::setw(15) << std::right << rhs.name << ", " << rhs.age << "]" << std::endl;
+	return os;
+};
+
+int main()
+{
+	std::cout << "\n=====Lambda for Vector Sorting=====" << std::endl << std::endl;            //Lambda std::sort & std::for_each
+	std::vector <Person> account_names{                                                //vector
+		{"Jenny", 34},{"Sam", 32},{"John",56 }
+	};
+	account_names.emplace_back(Person{"Sarah",18});                //emplace_back Person objects to vector
+	std::sort(begin(account_names), end(account_names), [](const Person& p1, const Person& p2) {
+		return p1.get_name() < p2.get_name();
+	});                                                                                
+	std::for_each(begin(account_names), end(account_names), [](const Person& p) {
+		std::cout << p << std::endl;
+		});
+
+	return 0;
+}
