@@ -46,5 +46,12 @@ int main() {
 	player_names.insert(player_names.begin(), Player{ "Gollom", 600, 17.66 });
 	std::cout << std::setw(33) << std::left << std::setfill('-') << "\n" << std::endl;
 	display(player_names);
-return 0;
+	std::cout << std::setw(33) << std::left << std::setfill('-') << "\n" << std::endl;
+	std::cout << "Lambda Expression, to sort alphabetically by name." << std::endl;
+	std::sort(begin(player_names), end(player_names), [](const Player& p1, const Player& p2) { //lambada expression
+		return p1.get_name() < p2.get_name();
+		});
+	display(player_names);
+	
+	return 0;
 }
