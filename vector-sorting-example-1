@@ -42,5 +42,9 @@ int main() {
 		{}, {"Jennifer", 34},{"Samantha", 32, 10.3},{"Elizabeth",56 }, {"Gandalf", 400, 1989.9}
 	};
 	display(player_names);
+	player_names.emplace_back(Player{ "Jenny",18 });   
+	player_names.insert(player_names.begin(), Player{ "Gollom", 600, 17.66 });
+	std::cout << std::setw(33) << std::left << std::setfill('-') << "\n" << std::endl;
+	display(player_names);
 return 0;
 }
