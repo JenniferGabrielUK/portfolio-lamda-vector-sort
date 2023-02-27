@@ -30,6 +30,9 @@ std::ostream& operator<<(std::ostream& os, const Player& rhs) {                 
 };
 
 int main() {
-
+	std::cout << std::setw(33) << std::left << std::setfill('-') << "\n" << std::endl;
+	std::vector <Player> player_names{                                                
+		{}, {"Jennifer", 34},{"Samantha", 32, 10.3},{"Elizabeth",56 }, {"Gandalf", 400, 1989.9}
+	};
 return 0;
 }
