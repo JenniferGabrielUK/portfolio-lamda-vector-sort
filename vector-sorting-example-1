@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <functional>
+#include <algorithm>
+#include <iomanip>
+
+class Player {
+	friend std::ostream& operator<<(std::ostream& os, const Player& rhs);             //overloaded insertion operator<< friend
+private:
+	std::string name;
+	int age;
+	double xp;
+
+public:
+	Player(std::string name, int age, double xp) : name{ name }, age{ age }, xp{ xp } {};                  //overloaded constructor
+	Player(const Player& p) : name{ p.name }, age{ p.age }, xp{ p.xp } {}                         //copy constructor
+	~Player() = default;                                                              //default destrcutor
+	void set_name(std::string name) { this->name = name; }
+	std::string get_name() const { return name; }
+	void set_age(int age) { this->age = age; }
+	int get_age()const { return age; }
+	void set_xp(double xp) { this->xp = xp; }
+	double get_xp() const { return xp; }
+};
+
+std::ostream& operator<<(std::ostream& os, const Player& rhs) {                        //overloaded insertion operator code
+	os << std::setw(15) << std::left << "[Person: " << std::setw(15) << std::right << rhs.name << ", " << rhs.age << ", " << rhs.xp << "]" << std::endl;
+	return os;
+};
+
+int main() {
+
+return 0;
+}
